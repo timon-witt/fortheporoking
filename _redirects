@@ -1,2 +1,0 @@
-# This is necessary for netlify, to redirect all routes to /index.html
-/*    /index.html   200

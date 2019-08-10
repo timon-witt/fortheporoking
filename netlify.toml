@@ -1,0 +1,5 @@
+# This redirect is necessary as the react router SPA handles all routing internally.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
