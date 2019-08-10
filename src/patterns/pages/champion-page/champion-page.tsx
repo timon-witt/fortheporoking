@@ -29,7 +29,7 @@ export class ChampionPage extends React.Component<ChampionPageProps, ChampionPag
    * props are updated instead of instantiating a new component.
    */
   componentDidUpdate(prevProps: ChampionPageProps) {
-    if(prevProps.match.params.championTag !== this.props.match.params.championTag){
+    if(prevProps.location.key !== this.props.location.key){
       this.init(this.props);
     }
   }
