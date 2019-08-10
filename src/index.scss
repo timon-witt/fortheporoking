@@ -22,13 +22,14 @@ body {
 
 .Page {
   height: 100%;
-  width: calc(100% - #{$sidebar-width});
+  width: 100%;
   overflow: auto;
   background: #222;
 
   &-content {
     width: 50%;
     min-width: 75rem;
+    padding-left: $sidebar-width;
     margin: auto;
   }
 }
