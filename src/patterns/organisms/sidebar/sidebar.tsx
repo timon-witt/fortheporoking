@@ -12,7 +12,7 @@ export const Sidebar: React.FC<SidebarProps> = (_props: SidebarProps) => {
       <div>
         <Link to="/" className="Sidebar-logo">Troll Pick</Link>
         <div className="Sidebar-introduction">
-          Generate a random champion
+          Get a random champion
         </div>
       </div>
       <div className="Sidebar-section">
