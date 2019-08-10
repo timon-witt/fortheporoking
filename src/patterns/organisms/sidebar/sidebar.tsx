@@ -26,7 +26,7 @@ export const Sidebar: React.FC<SidebarProps> = (_props: SidebarProps) => {
       </div>
       <div className="Sidebar-secondary">
         <Link to="/impressum" className="Sidebar-button Sidebar-secondaryButton">Impressum</Link>
-        <a href="https://github.com/timon-witt/trollpick" className="Sidebar-button Sidebar-secondaryButton">GitHub</a>
+        <a href="https://github.com/timon-witt/trollpick" className="Sidebar-button Sidebar-secondaryButton" target="_blank">GitHub</a>
       </div>
     </div>
   );
