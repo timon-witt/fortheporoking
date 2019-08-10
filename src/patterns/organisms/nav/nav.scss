@@ -1,20 +1,20 @@
 @import '../../../css/variables.scss';
 
-$sidebar-width: 22rem;
-$sidebar-padding: 1rem;
+$nav-width: 22rem;
+$nav-padding: 1rem;
 
-.Sidebar {
+.Nav {
   background: transparent;
   backdrop-filter: blur(5px) brightness(90%);
   border-right: solid 0.1rem black;
   color: white;
-  height: calc(100% - #{$sidebar-padding} * 2);
-  width: $sidebar-width;
+  height: calc(100% - #{$nav-padding} * 2);
+  width: $nav-width;
   z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: $sidebar-padding 0;
+  padding: $nav-padding 0;
   flex-shrink: 0;
   position: fixed;
 

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker';
-import { Sidebar } from './patterns/organisms/sidebar/sidebar';
+import { Nav } from './patterns/organisms/nav/nav';
 import { ChampionPage } from './patterns/pages/champion-page/champion-page';
 import { ImpressumPage } from './patterns/pages/impressum-page/impressum-page';
 
@@ -11,7 +11,7 @@ import './index.scss';
 const routing = (
   <Router>
     <div className="App">
-      <Sidebar />
+      <Nav />
       <Switch>
         <Route exact path="/" component={ChampionPage} />
         <Route path="/impressum" component={ImpressumPage} />

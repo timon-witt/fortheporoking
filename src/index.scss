@@ -1,4 +1,4 @@
-@import './patterns/organisms/sidebar/sidebar.scss';
+@import './patterns/organisms/nav/nav.scss';
 
 html {
   font-size: 62.5%; /* 10px = 1rem */
@@ -29,7 +29,7 @@ body {
   &-content {
     width: 50%;
     min-width: 75rem;
-    padding-left: $sidebar-width;
+    padding-left: $nav-width;
     margin: auto;
   }
 }
