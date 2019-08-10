@@ -30,44 +30,49 @@ $sidebar-padding: 1rem;
     font-style: italic;
   }
 
-  &-section {
+  &-primary {
     display: flex;
     flex-direction: column;
+
+    &Button {
+      padding: 1.5rem;
+      text-decoration: none;
+      color: white;
+      text-align: center;
+      font-size: 1.8rem;
+      transition: background 0.1s ease-in-out; 
+      position: relative;
+      margin-top: -0.1rem; // So that hover background color also overlaps the previous siblings "border"
+
+      &:hover {
+        background: #444;
+      }
+
+      &:not(:last-child):not(.is-active)::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 1rem;
+        right: 1rem;
+        height: 0.1rem;
+        background: #444;
+      }
+
+      &.is-active {
+        background: #888;
+      }
+    }
   }
 
-  &-primaryButton {
-    padding: 1.5rem;
-    text-decoration: none;
-    color: white;
-    text-align: center;
-    font-size: 1.8rem;
-    transition: background 0.1s ease-in-out; 
-    position: relative;
-    margin-top: -0.1rem; // So that hover background color also overlaps the previous siblings "border"
+  &-secondary {
+    display: flex;
+    justify-content: space-evenly;
 
-    &:hover {
-      background: #444;
+    &Button {
+      text-decoration-line: none;
+      text-align: center;
+      color: white;
+      font-size: 1.2rem;
     }
-
-    &:not(:last-child):not(.is-active)::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 1rem;
-      right: 1rem;
-      height: 0.1rem;
-      background: #444;
-    }
-
-    &.is-active {
-      background: #888;
-    }
-  }
-
-  &-secondaryButton {
-    text-decoration-line: none;
-    text-align: center;
-    color: white;
-    font-size: 1.2rem;
   }
 }
