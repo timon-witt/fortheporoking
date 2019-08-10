@@ -6,8 +6,8 @@ export const ImpressumPage: React.FC = () => {
       <div className="Page-content">
 
         <h1>Impressum</h1>
+        Timon Witt
         <p>
-          Timon Witt
           Südstr., 5<br />
           83607 Holzkirchen<br />
           E-Mail timon.witt@gmail.com<br />
