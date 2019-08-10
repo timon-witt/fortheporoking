@@ -1,0 +1,38 @@
+@import './patterns/organisms/sidebar/sidebar.scss';
+
+html {
+  font-size: 62.5%; /* 10px = 1rem */
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1.4rem;
+  color: white;
+}
+
+.App {
+  display: flex;
+  height: 100vh;
+}
+
+.Page {
+  height: 100%;
+  width: calc(100% - #{$sidebar-width});
+  overflow: auto;
+  background: #222;
+
+  &-content {
+    width: 50%;
+    min-width: 75rem;
+    margin: auto;
+  }
+}
+
+a {
+  color: white;
+}
