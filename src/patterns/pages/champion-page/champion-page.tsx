@@ -7,13 +7,14 @@ import { setRandomPageTitle } from '../../../ts/utils/random-page-title';
 import './champion-page.scss';
 
 type ChampionPageParams = {
-  championTag: ddragon.ChampionTag
+  filter: ddragon.ChampionTag | 'fuckThisShit'
 }
 
 export type ChampionPageProps = RouteComponentProps<ChampionPageParams>;
 
 type ChampionPageState = {
   champion?: ddragon.Champion;
+  error?: boolean;
 }
 
 export class ChampionPage extends React.Component<ChampionPageProps, ChampionPageState> {
@@ -29,7 +30,7 @@ export class ChampionPage extends React.Component<ChampionPageProps, ChampionPag
    * props are updated instead of instantiating a new component.
    */
   componentDidUpdate(prevProps: ChampionPageProps) {
-    if(prevProps.location.key !== this.props.location.key){
+    if (prevProps.location.key !== this.props.location.key) {
       this.init(this.props);
     }
   }
@@ -41,6 +42,11 @@ export class ChampionPage extends React.Component<ChampionPageProps, ChampionPag
         {champ &&
           <img className="ChampionPage-splashart" src={ddragon.urls.splashart(champ.id)} alt="Champion Splashart" />
         }
+        {this.state.error &&
+          <div className="Page-content ChampionPage-error">
+            <h1>Sorry, something seems broken...</h1>
+          </div>
+        }
       </div>
     );
   }
@@ -49,11 +55,29 @@ export class ChampionPage extends React.Component<ChampionPageProps, ChampionPag
    * May be called from constructor or componentDidUpdate.
    */
   private init = (props: ChampionPageProps) => {
-    // Get a random champion 
-    services.championService.getRandomChampion(props.match.params.championTag)
-      .then(champ => this.setState({ champion: champ }));
+    const filter = props.match.params.filter;
+
+    switch (filter) {
+      case 'fuckThisShit':
+        services.championService.getSpecificChampion('Teemo')
+          .then(this.setChampion);
+        break;
+
+      default:
+        // Get a random champion 
+        services.championService.getRandomChampion(filter)
+          .then(this.setChampion);
+        break;
+    }
 
     // Set random page title
     setRandomPageTitle();
+  }
+
+  /**
+   * @param champion undefined is allowed to show error message.
+   */
+  private setChampion = (champion: ddragon.Champion | undefined) => {
+    this.setState({ champion, error: !champion });
   }
 }

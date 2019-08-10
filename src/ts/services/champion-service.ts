@@ -27,6 +27,10 @@ export class ChampionService {
         return champs[randomIndex];
       });
 
+  getSpecificChampion = (id: string): Promise<ddragon.Champion | undefined> =>
+    this.champions
+      .then(champions => champions.find(({ name }) => name === id));
+
 
   private fetchLatestVersion = () =>
     ddragon.getVersions()

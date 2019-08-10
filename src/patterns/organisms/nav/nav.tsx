@@ -19,10 +19,15 @@ export const Nav: React.FC = () => {
         <NavLink activeClassName="is-active" to="/assassin" className="Nav-button Nav-primaryButton">Assassin</NavLink>
         <NavLink activeClassName="is-active" to="/support" className="Nav-button Nav-primaryButton">Support</NavLink>
         <NavLink activeClassName="is-active" to="/marksman" className="Nav-button Nav-primaryButton">Marksman</NavLink>
+        <NavLink activeClassName="is-active" to="/fuckThisShit" className="Nav-button Nav-primaryButton">Fuck this shit</NavLink>
       </div>
       <div className="Nav-secondary">
         <Link to="/impressum" className="Nav-button Nav-secondaryButton">Impressum</Link>
-        <a href="https://github.com/timon-witt/trollpick" className="Nav-button Nav-secondaryButton" target="_blank">GitHub</a>
+        <a href="https://github.com/timon-witt/trollpick"
+          className="Nav-button Nav-secondaryButton"
+          target="_blank"
+          rel="noopener noreferrer"
+        >GitHub</a>
       </div>
     </div>
   );

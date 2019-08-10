@@ -15,7 +15,7 @@ const routing = (
       <Switch>
         <Route exact path="/" component={ChampionPage} />
         <Route path="/impressum" component={ImpressumPage} />
-        <Route path="/:championTag" component={ChampionPage} />
+        <Route path="/:filter" component={ChampionPage} />
       </Switch>
     </div>
   </Router>
