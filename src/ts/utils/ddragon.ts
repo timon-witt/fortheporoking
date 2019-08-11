@@ -15,12 +15,3 @@ export const urls = {
   champions: (version: string) => `https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json`,
   splashart: (championId: string) => `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${championId}_0.jpg`
 }
-
-export const getVersions = (): Promise<string[]> =>
-  fetch(urls.versions)
-    .then(response => response.json())
-
-export const getChampions = (version: string): Promise<{ [id: string]: Champion }> =>
-  fetch(urls.champions(version))
-    .then(response => response.json())
-    .then(({ data }) => data)

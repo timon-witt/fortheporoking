@@ -1,3 +1,8 @@
+[build]
+  command = "yarn build"
+  functions = "built-lambda"
+  publish = "build"
+
 # This redirect is necessary as the react router SPA handles all routing internally.
 [[redirects]]
   from = "/*"

@@ -1,12 +1,18 @@
 import * as ddragon from '../utils/ddragon';
+import lambdaApi from './lambda-api';
+
+/**
+ * To make it mockable.
+ */
+export type ChampionServiceApi = {
+  getChampions: () => Promise<ddragon.Champion[]>;
+}
 
 export class ChampionService {
   champions: Promise<ddragon.Champion[]>;
 
-  constructor() {
-    // Fetch latest champions data
-    this.champions = this.fetchLatestVersion()
-      .then(this.fetchChampions);
+  constructor(private api: ChampionServiceApi) {
+    this.champions = this.api.getChampions();
   }
 
   /**
@@ -30,19 +36,13 @@ export class ChampionService {
   getSpecificChampion = (id: string): Promise<ddragon.Champion | undefined> =>
     this.champions
       .then(champions => champions.find(({ name }) => name === id));
-
-
-  private fetchLatestVersion = () =>
-    ddragon.getVersions()
-      .then(versions => versions[0]);
-
-  /**
-   * Fetches champions from ddragon and brings them in array format.
-   * The array format is much handier for our use case.
-   */
-  private fetchChampions = (version: string) =>
-    ddragon.getChampions(version)
-      .then(champs =>
-        Object.keys(champs).map(id => champs[id])
-      )
 }
+
+/**
+ * Default api using lambda.
+ */
+const api: ChampionServiceApi = {
+  getChampions: lambdaApi.getChampions
+}
+
+export default new ChampionService(api);
