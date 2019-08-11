@@ -24,7 +24,8 @@ export async function handler(event: AWSLambda.APIGatewayEvent) {
     const summonerName = event.queryStringParameters[summonerNameParam];
 
     const summoner = await api.getSummonerByName(summonerName);
-    const matches = await api.getMatchesLast30Days(summoner.accountId);
+    const matches = (await api.getMatchesLast30Days(summoner.accountId))
+      .filter(({queue}) => queue !== 450 && queue !== 100);  // Filter aram and butchers bridge aram
 
     return ({
       statusCode: 200,

@@ -28,9 +28,34 @@ $nav-padding: 1rem;
   }
 
   &-introduction {
-    margin: 2rem 1rem 5rem;
+    margin: 2.5rem 1rem;
     text-align: center;
     font-style: italic;
+  }
+
+  &-summoner {
+    margin: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &Description {
+      font-style: italic;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    &Input {
+      background: transparent;
+      border-bottom: solid 0.1rem rgba(255, 255, 255, 0.15);
+      border-radius: 0.2rem;
+      text-align: center;
+
+      &:focus {
+        outline: none;
+        background: rgba(255, 255, 255, 0.15);
+      }
+    }
   }
 
   &-primary {
@@ -45,8 +70,10 @@ $nav-padding: 1rem;
       font-size: 1.8rem;
       transition: background 0.1s ease-in-out; 
       position: relative;
+      outline: none;
 
-      &:hover {
+      &:hover,
+      &:focus {
         background: rgba(255, 255, 255, 0.1);
       }
 

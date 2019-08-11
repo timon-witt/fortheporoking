@@ -3,6 +3,7 @@ import * as ddragon from '../../../ts/utils/ddragon';
 import { RouteComponentProps } from 'react-router';
 import services from '../../../ts/services/services';
 import { setRandomPageTitle } from '../../../ts/utils/random-page-title';
+import { parseQueryString } from '../../../ts/utils/query';
 
 import './champion-page.scss';
 
@@ -59,20 +60,26 @@ export class ChampionPage extends React.Component<ChampionPageProps, ChampionPag
 
     switch (filter) {
       case 'fuckThisShit':
-        services.championService.getSpecificChampion('Teemo')
-          .then(this.setChampion);
+        this.setTeemo();
         break;
 
       default:
-        // Get a random champion 
-        services.championService.getRandomChampion(filter)
-          .then(this.setChampion);
+        const summonerName = parseQueryString(this.props.location.search).get('summoner');
+        this.setRandomChampion(filter, summonerName);
         break;
     }
 
     // Set random page title
     setRandomPageTitle();
   }
+
+  private setRandomChampion = (tag?: ddragon.ChampionTag, summonerName?: string) =>
+    services.championService.getRandomChampion(tag, summonerName)
+      .then(this.setChampion);
+
+  private setTeemo = () =>
+    services.championService.getChampionByName('Teemo')
+      .then(this.setChampion);
 
   /**
    * @param champion undefined is allowed to show error message.

@@ -12,7 +12,8 @@ export class RiotApi {
 
   getMatchesLast30Days = (accountId: string): Promise<Match[]> => {
     const beginTime = Date.now() - 1000 * 60 * 60 * 24 * 30;  // 30 days ago
-    return this.fetch(`match/v4/matchlists/by-account/${accountId}?beginTime=${beginTime}`);
+    return this.fetch(`match/v4/matchlists/by-account/${accountId}?beginTime=${beginTime}`)
+      .then(({ matches }) => matches);
   }
 
 
@@ -53,4 +54,6 @@ export type Match = {
    * Champion key
    */
   champion: number;
+  timestamp: number;
+  queue: number;
 }
