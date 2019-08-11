@@ -17,6 +17,7 @@ export class Nav extends React.Component<RouteComponentProps> {
           <div className="Nav-summonerDescription">
             Only want champs that you recently played? Enter your summoner name below.
           </div>
+          {/* IDEA: "Just beginn typing and press enter" globally on the whole page to filter by summoner */}
           <input type="text" placeholder="Your summoner name" onBlur={this.onSummonerBlur}
             onKeyPress={this.onSummonerKeyPress} className="Nav-summonerInput"
           />
