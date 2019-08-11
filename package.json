@@ -7,6 +7,8 @@
     "@types/jest": "24.0.17",
     "@types/node-fetch": "^2.5.0",
     "@types/react-dom": "^16.8.5",
+    "@types/riot-api-nodejs": "^0.0.28",
+    "dotenv-webpack": "^1.7.0",
     "encoding": "^0.1.12",
     "http-proxy-middleware": "^0.19.1",
     "node-fetch": "^2.6.0",
@@ -14,12 +16,13 @@
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.0",
+    "riot-api-nodejs": "^2.1.0",
     "typescript": "^3.5.3"
   },
   "scripts": {
     "start": "run-p start:**",
     "start:app": "react-scripts start",
-    "start:lambda": "netlify-lambda serve src/lambda",
+    "start:lambda": "netlify-lambda serve src/lambda --config ./webpack.functions.js",
     "build": "run-p build:**",
     "build:app": "react-scripts build",
     "build:lambda": "netlify-lambda build src/lambda",

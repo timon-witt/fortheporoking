@@ -1,9 +1,8 @@
-import { APIGatewayProxyResult } from 'aws-lambda';
 import ddragonApi from './utils/ddragon-api';
 import { Champion } from '../ts/utils/ddragon';
 
 /**
- * Return type of get-champions function.
+ * Returned body of get-champions function.
  */
 export type GetChampions = Champion[];
 
@@ -21,7 +20,7 @@ export async function handler() {
     console.log(err); // output to netlify function log
     return {
       statusCode: 500,
-      body: JSON.stringify({ msg: err.message }) // Could be a custom message or object i.e. JSON.stringify(err)
+      body: JSON.stringify({ msg: JSON.stringify(err) })
     };
   }
 }
