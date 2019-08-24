@@ -2,8 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker';
-import Nav from './patterns/organisms/nav/nav';
-import { ChampionPage } from './patterns/pages/champion-page/champion-page';
+import { DialoguePage } from './patterns/pages/dialogue-page/dialogue-page';
 import { ImpressumPage } from './patterns/pages/impressum-page/impressum-page';
 
 import './index.scss';
@@ -11,11 +10,9 @@ import './index.scss';
 const routing = (
   <Router>
     <div className="App">
-      <Nav />
       <Switch>
-        <Route exact path="/" component={ChampionPage} />
+        <Route exact path="/" component={DialoguePage} />
         <Route path="/impressum" component={ImpressumPage} />
-        <Route path="/:filter" component={ChampionPage} />
       </Switch>
     </div>
   </Router>

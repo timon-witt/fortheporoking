@@ -1,0 +1,55 @@
+
+.DialogueBox {
+  max-width: 100rem;
+  min-height: 30rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &-avatar {
+    flex-shrink: 0;
+    width: 15rem;
+    height: 15rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background: url("/images/poro-king.png");
+    background-size: cover;
+    background-position: center;
+    border: solid 0.2rem #1e2528;
+    z-index: 1;
+  }
+
+  &-frame {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-top: -3.5rem;
+    position: relative;
+
+    &Top,
+    &Middle,
+    &Bottom {
+      width: 100%;
+    }
+
+    &Top {
+      margin-bottom: -0.1rem;  /* prevents thin visible line between parts */
+    }
+
+    &Bottom {
+      margin-top: -0.1rem;  /* prevents thin visible line between parts */
+    }
+
+    &Middle {
+      flex-grow: 1;
+    }
+
+    &Content {
+      position: absolute;
+      top: 5rem;
+      right: 3rem;
+      bottom: 5rem;
+      left: 3rem;
+    }
+  }
+}
