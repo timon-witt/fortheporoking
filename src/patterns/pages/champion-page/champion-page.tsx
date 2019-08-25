@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import * as ddragon from '../../../ts/utils/ddragon';
+import * as ddragon from '../../../ts/ddragon';
 import { RouteComponentProps } from 'react-router';
 import services from '../../../ts/services/services';
 import { setRandomPageTitle } from '../../../ts/utils/random-page-title';

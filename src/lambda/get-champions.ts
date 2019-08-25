@@ -1,5 +1,5 @@
 import ddragonApi from './utils/ddragon-api';
-import { Champion } from '../ts/utils/ddragon';
+import { Champion } from '../ts/ddragon';
 
 /**
  * Returned body of get-champions function.

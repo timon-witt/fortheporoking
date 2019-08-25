@@ -3,6 +3,7 @@ import services from '../../../ts/services/services';
 import { DialogueScene, DialogueContentInputOption, SetScene } from '../../molecules/dialogue-content/dialogue-content';
 
 const onSummonerNameInput = (summonerName: string, setScene: SetScene) => {
+  
   scenes.assignChampKnownSummoner(summonerName).then(setScene);
 }
 

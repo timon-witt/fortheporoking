@@ -1,4 +1,4 @@
-import * as ddragon from '../utils/ddragon';
+import * as ddragon from '../ddragon';
 import lambdaApi from './lambda-api';
 import * as riotApi from '../../lambda/utils/riot-api';
 import randomBiased from '../utils/random-biased';

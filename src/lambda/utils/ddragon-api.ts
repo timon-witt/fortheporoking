@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import { Champion, urls } from '../../ts/utils/ddragon';
+import { Champion, urls } from '../../ts/ddragon';
 
 /**
  * This component acts as an api to ddragon.
