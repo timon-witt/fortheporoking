@@ -42,15 +42,16 @@ export class ChampionService {
         } else {
           return this.getSummonerMatches(summonerName)
             .then(matches => {
-              console.log(matches);
+              if (!matches)
+                return Promise.reject();
               const championBiases = this.getChampionBiases(champs, matches);
               const biasesOnly = championBiases.map(([_, bias]) => bias);
               const randomIndex = randomBiased(biasesOnly);
               return this.getChampionByKey(championBiases[randomIndex][0].toString());
-            }).then(randomChamp => 
+            }).then(randomChamp =>
               // Just in case no champion was found, try getting one without summoner name
-              randomChamp || this.getRandomChampion(tag)  
-            );
+              randomChamp || this.getRandomChampion(tag)
+            ).catch(() => this.getRandomChampion(tag));
         }
       });
 
