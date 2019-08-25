@@ -1,7 +1,5 @@
 
 .DialogueBox {
-  max-width: 100rem;
-  min-height: 30rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,11 +18,22 @@
   }
 
   &-frame {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
     margin-top: -3.5rem;
     position: relative;
+    width: 100%;
+
+    &Background {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: -1;
+    }
 
     &Top,
     &Middle,
@@ -45,11 +54,7 @@
     }
 
     &Content {
-      position: absolute;
-      top: 5rem;
-      right: 3rem;
-      bottom: 5rem;
-      left: 3rem;
+      padding: 5rem;
     }
   }
 }

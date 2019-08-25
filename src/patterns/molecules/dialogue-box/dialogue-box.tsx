@@ -19,11 +19,13 @@ export class DialogueBox extends React.Component<DialogueBoxProps, DialogueBoxSt
       <div className={`DialogueBox ${this.props.className || ''}`}>
         <div className="DialogueBox-avatar"></div>
         <div className="DialogueBox-frame">
-          <img src="/images/frame-top.png" className="DialogueBox-frameTop" />
-          <img src="/images/frame-middle.png" className="DialogueBox-frameMiddle" />
-          <img src="/images/frame-bottom.png" className="DialogueBox-frameBottom" />
           <div className="DialogueBox-frameContent">
             {this.props.children}
+          </div>
+          <div className="DialogueBox-frameBackground">
+            <img src="/images/frame-top.png" className="DialogueBox-frameTop" alt="" />
+            <img src="/images/frame-middle.png" className="DialogueBox-frameMiddle" alt="" />
+            <img src="/images/frame-bottom.png" className="DialogueBox-frameBottom" alt="" />
           </div>
         </div>
       </div>
