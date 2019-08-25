@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import { DialogueBox } from '../../molecules/dialogue-box/dialogue-box';
 import { DialogueScene, DialogueContent } from '../../molecules/dialogue-content/dialogue-content';
 import { scenes } from './poro-king-dialogue-scenes';
+import localStorageKeys from '../../../ts/local-storage-keys';
 
 type PoroKingDialogueProps = {};
 type PoroKingDialogueState = {}
@@ -24,5 +25,10 @@ export class PoroKingDialogue extends React.Component<PoroKingDialogueProps, Por
     );
   }
 
-  private getInitialScene = () => scenes.welcome();
+  private getInitialScene = () => {
+    const localStorageSummoner = localStorage.getItem(localStorageKeys.summonerName);
+    return localStorageSummoner
+      ? scenes.welcomeWithKnownSummoner(localStorageSummoner)
+      : scenes.welcome();
+  }
 }

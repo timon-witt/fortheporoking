@@ -4,7 +4,7 @@ import './dialogue-content.scss';
 export type SetScene = (scene: DialogueScene) => void;
 
 export type DialogueScene = {
-  text?: string | JSX.Element;
+  text?: string | ReactNode;
   options?: Array<DialogueOption>;
   /**
    * Use this to render no options but completely custom content.
@@ -13,7 +13,7 @@ export type DialogueScene = {
 };
 
 export type DialogueOption = {
-  text?: string;
+  text?: string | ReactNode;
   onClick?: (setScene: SetScene) => void;
   render?: (setScene: SetScene) => ReactNode;
 };
@@ -50,7 +50,8 @@ export class DialogueContent extends React.Component<DialogueContentProps, Dialo
         {scene.options &&
           <div className="DialogueContent-options">
             {scene.options.map((option, index) =>
-              <DialogueContentOption option={option} setScene={this.setScene} key={option.text || index} />
+              // Index as key is ok since options don't change.
+              <DialogueContentOption option={option} setScene={this.setScene} key={index} />
             )}
           </div>
         }
@@ -80,12 +81,10 @@ class DialogueContentOption extends React.Component<DialogueContentOptionProps> 
     return option.onClick
       ? <button
         className="DialogueOption DialogueOption--button"
-        key={option.text}
         onClick={this.onClick}
       >{inner}</button>
       : <div
         className="DialogueOption"
-        key={option.text}
       >{inner}</div>
   }
 
