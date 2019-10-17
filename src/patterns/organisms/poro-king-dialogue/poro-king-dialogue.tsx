@@ -28,7 +28,7 @@ export class PoroKingDialogue extends React.Component<PoroKingDialogueProps, Por
   private getInitialScene = () => {
     const localStorageSummoner = localStorage.getItem(localStorageKeys.summonerName);
     return localStorageSummoner
-      ? scenes.welcomeWithKnownSummoner(localStorageSummoner)
-      : scenes.welcome();
+      ? scenes.welcome(localStorageSummoner)
+      : scenes.welcomeStranger();
   }
 }

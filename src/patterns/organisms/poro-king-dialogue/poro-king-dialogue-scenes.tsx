@@ -5,7 +5,7 @@ import localStorageKeys from '../../../ts/local-storage-keys';
 
 const onSummonerNameInput = (summonerName: string, setScene: SetScene) => {
   localStorage.setItem(localStorageKeys.summonerName, summonerName);
-  scenes.assignChampFirstTimeSummoner(summonerName).then(setScene);
+  scenes.assignChampFirstTime(summonerName).then(setScene);
 }
 
 const onResetSummoner = (setScene: SetScene) => {
@@ -14,8 +14,8 @@ const onResetSummoner = (setScene: SetScene) => {
 }
 
 export const scenes = {
-  welcome: (): DialogueScene => ({
-    text: 'Who disturbs the Poro King? Are you a summoner? What\'s your name?',
+  welcomeStranger: (): DialogueScene => ({
+    text: 'Who disturbs the Poro King? Is it an audience you desire? What\'s your summoner name?',
     options: [
       {
         render: setScene => {
@@ -25,16 +25,16 @@ export const scenes = {
       },
       {
         text: 'Sorry, my King, I can’t tell my name. Not here.',
-        onClick: setScene => scenes.assignChampUnknownSummoner().then(setScene)
+        onClick: setScene => scenes.assignChampStranger().then(setScene)
       }
     ]
   }),
-  welcomeWithKnownSummoner: (summonerName: string): DialogueScene => ({
+  welcome: (summonerName: string): DialogueScene => ({
     text: <span>Welcome back, <strong>{summonerName}</strong>! How are you doing today?</span>,
     options: [
       {
         text: 'I am very vell, my King. Please tell me, which champion is it that you desire me to play today?',
-        onClick: setScene => scenes.assignChampReturningSummoner(summonerName).then(setScene)
+        onClick: setScene => scenes.assignChamp(summonerName).then(setScene)
       },
       {
         text: <span><strong>{summonerName}</strong>? I am sorry, my King, but you must be mistaking me with another summoner.</span>,
@@ -42,6 +42,9 @@ export const scenes = {
       }
       // TODO: Special requirements option
     ]
+  }),
+  selfExplanationStranger: (): DialogueScene => ({
+
   }),
   changeSummoner: (): DialogueScene => ({
     text: 'Well then, who am I talking to?',
@@ -54,11 +57,11 @@ export const scenes = {
       },
       {
         text: 'I am sorry, but I can’t tell my name. Not here.',
-        onClick: setScene => scenes.assignChampUnknownSummoner().then(setScene)
+        onClick: setScene => scenes.assignChampStranger().then(setScene)
       }
     ]
   }),
-  assignChampUnknownSummoner: async (): Promise<DialogueScene> => {
+  assignChampStranger: async (): Promise<DialogueScene> => {
     const champ = await services.championService.getRandomChampion()
     return {
       text: (
@@ -70,7 +73,7 @@ export const scenes = {
       ),
     };
   },
-  assignChampFirstTimeSummoner: async (summonerName: string): Promise<DialogueScene> => {
+  assignChampFirstTime: async (summonerName: string): Promise<DialogueScene> => {
     const champ = await services.championService.getRandomChampion(undefined, summonerName);
     return {
       text: (
@@ -91,7 +94,7 @@ export const scenes = {
       }]
     };
   },
-  assignChampReturningSummoner: async (summonerName: string): Promise<DialogueScene> => {
+  assignChamp: async (summonerName: string): Promise<DialogueScene> => {
     const champ = await services.championService.getRandomChampion(undefined, summonerName)
     return {
       text: (
