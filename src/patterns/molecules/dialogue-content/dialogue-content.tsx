@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useRef, FunctionComponent, forwardRef } from 'react';
+import React, { ReactNode, useCallback, useRef, FunctionComponent, forwardRef, useState } from 'react';
 import './dialogue-content.scss';
 
 export type SetScene = (scene: DialogueScene) => void;
@@ -26,39 +26,25 @@ type DialogueContentProps = {
   initialScene: DialogueScene;
 };
 
-type DialogueContentState = {
-  scene: DialogueScene;
-};
-
 /**
- * Renders a dialogue scene.
+ * Renders a dialogue scene, which contains the poro kings
+ * text and interactable options for the user.
  */
-export class DialogueContent extends React.Component<DialogueContentProps, DialogueContentState> {
-
-  constructor(props: DialogueContentProps) {
-    super(props);
-    this.state = {
-      scene: props.initialScene
-    }
-  }
-
-  render(): ReactNode {
-    const { scene } = this.state;
-    return (
-      <div className="DialogueContent">
-        <div className="DialogueContent-text">{scene.text}</div>
-        {scene.options &&
-          <div className="DialogueContent-options">
-            {scene.options.map((option, index) =>
-              // Index as key is ok since options don't change.
-              <DialogueContentOption option={option} setScene={this.setScene} key={index} />
-            )}
-          </div>
-        }
-      </div>
-    );
-  }
-  private setScene = (scene: DialogueScene) => this.setState({ scene });
+export const DialogueContent = (props: React.PropsWithChildren<DialogueContentProps>) => {
+  const [scene, setScene] = useState(props.initialScene);
+  return (
+    <div className="DialogueContent">
+      <div className="DialogueContent-text">{scene.text}</div>
+      {scene.options &&
+        <div className="DialogueContent-options">
+          {scene.options.map((option, index) =>
+            // Index as key is ok since options don't change.
+            <DialogueContentOption option={option} setScene={setScene} key={index} />
+          )}
+        </div>
+      }
+    </div>
+  );
 }
 
 
@@ -70,31 +56,26 @@ type DialogueContentOptionProps = {
 /**
  * Renders a dialogue option.
  */
-class DialogueContentOption extends React.Component<DialogueContentOptionProps> {
-
-  render(): React.ReactNode {
-    const { option } = this.props;
-    const inner = option.text
-      ? <div className="DialogueOption-text">{option.text}</div>
-      : option.render && option.render(this.props.setScene);
-
-    return option.onClick
-      ? <button
-        className="DialogueOption DialogueOption--button"
-        onClick={this.onClick}
-      >{inner}</button>
-      : <div
-        className="DialogueOption"
-      >{inner}</div>
-  }
-
-  private onClick = () => {
-    const { option, setScene } = this.props;
+const DialogueContentOption = ({ option, setScene }: React.PropsWithChildren<DialogueContentOptionProps>) => {
+  const onClick = useCallback(() => {
     if (option.onClick) {
       option.onClick(setScene);
       // TODO: Set scene as inactive to prevent double clicks
     }
-  }
+  }, [option.onClick, setScene])
+
+  const inner = option.text
+    ? <div className="DialogueOption-text">{option.text}</div>
+    : option.render && option.render(setScene);
+
+  return option.onClick
+    ? <button
+      className="DialogueOption DialogueOption--button"
+      onClick={onClick}
+    >{inner}</button>
+    : <div
+      className="DialogueOption"
+    >{inner}</div>
 }
 
 /**

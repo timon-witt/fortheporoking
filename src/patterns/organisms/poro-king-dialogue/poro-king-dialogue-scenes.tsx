@@ -33,7 +33,7 @@ export const scenes = {
     text: <span>Welcome back, <strong>{summonerName}</strong>! How are you doing today?</span>,
     options: [
       {
-        text: 'I am very vell, my King. With what champion may I assist you today?',
+        text: 'I am very vell, my King. Please tell me, which champion is it that you desire me to play today?',
         onClick: setScene => scenes.assignChampReturningSummoner(summonerName).then(setScene)
       },
       {
@@ -45,7 +45,7 @@ export const scenes = {
     ]
   }),
   changeSummoner: (): DialogueScene => ({
-    text: 'Well then, what is your name then?',
+    text: 'Well then, who am I talking to?',
     options: [
       {
         render: setScene => {
@@ -59,32 +59,42 @@ export const scenes = {
       }
     ]
   }),
-  assignChampUnknownSummoner: (): Promise<DialogueScene> => {
-    return services.championService.getRandomChampion().then(champ => {
-      return {
-        text: <span>Well then, we are in a war and as I don’t know you,
-          I have to give you a random champion. I want you to join the
-          battle with <strong>{champ.name}</strong>. An epic fight awaits you, I can feel it!</span>,
-      }
-    });
+  assignChampUnknownSummoner: async (): Promise<DialogueScene> => {
+    const champ = await services.championService.getRandomChampion()
+    return {
+      text: <span>Well then, we are in a war and as I don’t know you,
+      I have to assign you a random champion.I want you to join the
+            battle with <strong>{champ.name}</strong>. An epic fight awaits you, I can feel it!</span>,
+    };
   },
-  assignChampFirstTimeSummoner: (summonerName: string): Promise<DialogueScene> => {
-    return services.championService.getRandomChampion(undefined, summonerName).then(champ => {
-      return {
-        text: <span>The famous <strong>{summonerName}</strong>?
-          Known for her great <strong>{champ.name}</strong> playstyle?
-          I need to see you in action!</span>
-      }
-    });
+  assignChampFirstTimeSummoner: async (summonerName: string): Promise<DialogueScene> => {
+    const champ = await services.championService.getRandomChampion(undefined, summonerName);
+    return {
+      text: <span>The famous <strong>{summonerName}</strong>?
+            Known for the greatest <strong>{champ.name}</strong> playstyle accross the entire kingdome?
+          I need to see you in action, right now!</span>,
+      options: [{
+        text: <span>I am going to show you my <strong>{champ.name}</strong> skills. Thank you so much, great poro king!</span>,
+        onClick: () => {
+          // TODO: Save champ in local storage and let poro king react on it next time
+        }
+      }, {
+        text: <span>My king, I have some <strong>special requirements</strong> today, if that may be ok for you.</span>,
+        onClick: setScene => setScene(scenes.specialRequirements())
+      }]
+    };
   },
-  assignChampReturningSummoner: (summonerName: string): Promise<DialogueScene> => {
-    return services.championService.getRandomChampion(undefined, summonerName).then(champ => {
-      return {
-        text: <span><strong>{summonerName}</strong>, now that you ask,
-          I have special needs today for a <strong>{champ.name}</strong>. It would be a pleasure
-          to see you on the battlefield with that champion. Especially knowing that you are astonishing talented.
-        </span>
-      }
-    });
+  assignChampReturningSummoner: async (summonerName: string): Promise<DialogueScene> => {
+    const champ = await services.championService.getRandomChampion(undefined, summonerName)
+    return {
+      text: <span>
+        <strong>{summonerName}</strong>, now that you ask,
+            I have special needs today for a <strong>{champ.name}</strong>.It would be a pleasure
+        to see you on the battlefield with that champion.Especially knowing that you are astonishing talented.
+          </span>
+    };
   },
+  specialRequirements: (): DialogueScene => ({
+    text: <span>And what may those special requirements be?</span>
+  })
 }
