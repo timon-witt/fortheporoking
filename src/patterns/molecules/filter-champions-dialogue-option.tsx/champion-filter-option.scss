@@ -1,0 +1,38 @@
+@import "../../../css/variables.scss";
+
+.ChampionFilter {
+
+  &-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    justify-content: space-around;
+  }
+
+  &-button {
+    display: flex;
+    align-items: center;
+    color: white;
+    margin: 0.5rem;
+    font-size: 1.6rem;
+    border-radius: 0.4rem;
+    padding: 1rem;
+    outline: none;
+    transition: background .15s ease-in-out;
+    width: 100%;
+
+    @media #{$media-desktop} {
+      width: auto;
+    }
+
+    &Icon {
+      width: 5rem;
+      margin-right: 1rem;
+    }
+
+    &:hover,
+    &:focus {
+      background: #28494faa;
+    }
+  }
+}

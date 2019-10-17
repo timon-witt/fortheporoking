@@ -70,7 +70,7 @@ const DialogueContentOption = ({ option, setScene }: React.PropsWithChildren<Dia
 
   return option.onClick
     ? <button
-      className="DialogueOption DialogueOption--button"
+      className="DialogueOption DialogueOption--button DialogueOption--withBorder"
       onClick={onClick}
     >{inner}</button>
     : <div

@@ -1,8 +1,9 @@
 import React, { ReactNode } from 'react';
 import { DialogueBox } from '../../molecules/dialogue-box/dialogue-box';
 import { DialogueScene, DialogueContent } from '../../molecules/dialogue-content/dialogue-content';
-import { scenes } from './poro-king-dialogue-scenes';
+import { strangerScenes } from '../../../ts/dialogue-scenes/stranger-dialogue-scenes';
 import localStorageKeys from '../../../ts/local-storage-keys';
+import { CitizenDialogue } from '../../../ts/dialogue-scenes/citizen-dialogue';
 
 type PoroKingDialogueProps = {};
 type PoroKingDialogueState = {}
@@ -25,10 +26,10 @@ export class PoroKingDialogue extends React.Component<PoroKingDialogueProps, Por
     );
   }
 
-  private getInitialScene = () => {
+  private getInitialScene = (): DialogueScene => {
     const localStorageSummoner = localStorage.getItem(localStorageKeys.summonerName);
     return localStorageSummoner
-      ? scenes.welcome(localStorageSummoner)
-      : scenes.welcomeStranger();
+      ? new CitizenDialogue(localStorageSummoner).scenes.welcome()
+      : strangerScenes.welcome();
   }
 }
