@@ -1,3 +1,4 @@
+@import "../../../css/variables.scss";
 
 .DialogueBox {
   display: flex;
@@ -54,7 +55,11 @@
     }
 
     &Content {
-      padding: 5rem;
+      padding: 5rem 2rem 2rem;
+      
+      @media #{$media-desktop} {
+        padding: 5rem;  
+      }
     }
   }
 }

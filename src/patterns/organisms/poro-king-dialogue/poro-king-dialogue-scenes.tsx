@@ -37,8 +37,7 @@ export const scenes = {
         onClick: setScene => scenes.assignChampReturningSummoner(summonerName).then(setScene)
       },
       {
-        text: <span><strong>{summonerName}</strong>?
-          I am sorry, my King, but you must be mistaking me with another summoner.</span>,
+        text: <span><strong>{summonerName}</strong>? I am sorry, my King, but you must be mistaking me with another summoner.</span>,
         onClick: onResetSummoner
       }
       // TODO: Special requirements option
@@ -62,17 +61,25 @@ export const scenes = {
   assignChampUnknownSummoner: async (): Promise<DialogueScene> => {
     const champ = await services.championService.getRandomChampion()
     return {
-      text: <span>Well then, we are in a war and as I don’t know you,
-      I have to assign you a random champion.I want you to join the
-            battle with <strong>{champ.name}</strong>. An epic fight awaits you, I can feel it!</span>,
+      text: (
+        <span>
+          Well then, we are in a war and as I don’t know you,
+          I have to assign you a random champion. I want you to join the
+          battle with <strong>{champ.name}</strong>. An epic fight awaits you, I can feel it!
+        </span>
+      ),
     };
   },
   assignChampFirstTimeSummoner: async (summonerName: string): Promise<DialogueScene> => {
     const champ = await services.championService.getRandomChampion(undefined, summonerName);
     return {
-      text: <span>The famous <strong>{summonerName}</strong>?
-            Known for the greatest <strong>{champ.name}</strong> playstyle accross the entire kingdome?
-          I need to see you in action, right now!</span>,
+      text: (
+        <span>
+          The famous <strong>{summonerName}</strong>?
+          Known for the greatest <strong>{champ.name}</strong> playstyle accross the entire kingdome?
+          I need to see you in action, right now!
+        </span>
+      ),
       options: [{
         text: <span>I am going to show you my <strong>{champ.name}</strong> skills. Thank you so much, great poro king!</span>,
         onClick: () => {
@@ -87,11 +94,13 @@ export const scenes = {
   assignChampReturningSummoner: async (summonerName: string): Promise<DialogueScene> => {
     const champ = await services.championService.getRandomChampion(undefined, summonerName)
     return {
-      text: <span>
-        <strong>{summonerName}</strong>, now that you ask,
-            I have special needs today for a <strong>{champ.name}</strong>.It would be a pleasure
-        to see you on the battlefield with that champion.Especially knowing that you are astonishing talented.
-          </span>
+      text: (
+        <span>
+          <strong>{summonerName}</strong>, now that you ask,
+          I have special needs today for a <strong>{champ.name}</strong>. It would be a pleasure
+          to see you on the battlefield with that champion. Especially knowing that you are astonishing talented.
+        </span>
+      )
     };
   },
   specialRequirements: (): DialogueScene => ({
