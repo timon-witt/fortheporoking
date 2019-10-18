@@ -8,3 +8,19 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+# Redirect domain aliases to primary domain
+[[redirects]]
+  from = "https://troll-pick.com/*"
+  to = "https://fortheporoking.net/:splat"
+  status = 301
+
+[[redirects]]
+  from = "https://www.troll-pick.com/*"
+  to = "https://fortheporoking.net/:splat"
+  status = 301
+
+[[redirects]]
+  from = "https://trollpick.netlify.com/*"
+  to = "https://fortheporoking.net/:splat"
+  status = 301

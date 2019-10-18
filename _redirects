@@ -1,5 +1,0 @@
-# File for netlify redirects
-
-https://troll-pick.com/* https://fortheporoking.net/:splat 301!
-https://www.troll-pick.com/* https://fortheporoking.net/:splat 301!
-https://trollpick.netlify.com/* https://fortheporoking.net/:splat 301!
