@@ -1,4 +1,29 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the code for https://troll-pick.com/
+
+## Backend / Lambda Functions
+
+The project uses aws lambda functions for all backend stuff.
+The functions are located in `/src/lambda/`
+
+## Frontend
+
+The frontend uses Typescript, Sass and React with react-router.
+
+## Riot API
+
+To fetch the relevant LoL related informations, two data sources are used:
+
+- Riot Data Dragon (https://developer.riotgames.com/docs/lol#data-dragon)
+- Riot API
+
+The riot API key is configured with the environemnt variable: `LOL_API_KEY` <br>
+For local development, use reacts custom env variables: https://create-react-app.dev/docs/adding-custom-environment-variables/
+
+## Deployment
+
+The master branch is used for continuous deployment.
+
+<hr>
 
 ## Available Scripts
 
