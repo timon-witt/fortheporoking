@@ -5,6 +5,9 @@ import { championFilterOption } from '../../patterns/molecules/filter-champions-
 import * as ddragon from '../ddragon';
 import { CitizenDialogue } from './citizen-dialogue';
 
+/**
+ * "Stranger" dialogue scenes are used when the users summoner name is unknown.
+ */
 export const strangerScenes = {
   welcome: (): DialogueScene => ({
     text: 'Who disturbs the Poro King? Is it an audience you desire? What\'s your summoner name?',

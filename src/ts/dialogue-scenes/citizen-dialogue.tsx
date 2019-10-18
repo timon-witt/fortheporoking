@@ -6,6 +6,9 @@ import { strangerScenes } from './stranger-dialogue-scenes';
 import { championFilterOption } from '../../patterns/molecules/filter-champions-dialogue-option.tsx/champion-filter-option';
 import * as ddragon from '../ddragon';
 
+/**
+ * This "Citizen" dialogue and its scenes are used when the users summoner name is known.
+ */
 export class CitizenDialogue {
 
   constructor(private summonerName: string) { }
@@ -28,7 +31,6 @@ export class CitizenDialogue {
           text: <span><strong>{this.summonerName}</strong>? I am sorry, my King, but you must be mistaking me with another summoner.</span>,
           onClick: this.onResetSummoner
         }
-        // TODO: Special requirements option
       ]
     }),
     changeSummoner: (): DialogueScene => ({
@@ -110,7 +112,7 @@ export class CitizenDialogue {
       }
 
       return {
-        text: times > 10
+        text: times > 1
           ? <span><strong>{champ.name}</strong>?</span>
           : <span>You are a really special snowflake, aren't you? How about <strong>{champ.name}</strong>?</span>,
         options: [
