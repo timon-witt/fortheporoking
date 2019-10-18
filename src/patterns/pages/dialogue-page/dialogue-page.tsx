@@ -22,7 +22,7 @@ export const DialoguePage = (props: React.PropsWithChildren<DialoguePageProps>) 
         {/* Do not use <Link> on purpose, so that we get a real page load
             and dialogue components do not have to handle prop changes */}
         <a href="/impressum" className="DialoguePage-footerLink">Impressum</a>
-        <a href="https://github.com/timon-witt/trollpick"
+        <a href="https://github.com/timon-witt/fortheporoking"
           className="DialoguePage-footerLink"
           target="_blank"
           rel="noopener noreferrer"
