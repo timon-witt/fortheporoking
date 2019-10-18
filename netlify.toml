@@ -14,16 +14,13 @@
   from = "https://troll-pick.com/*"
   to = "https://fortheporoking.net/:splat"
   status = 301
-  force = true
 
 [[redirects]]
   from = "https://www.troll-pick.com/*"
   to = "https://fortheporoking.net/:splat"
   status = 301
-  force = true
 
 [[redirects]]
   from = "https://trollpick.netlify.com/*"
   to = "https://fortheporoking.net/:splat"
   status = 301
-  force = true
