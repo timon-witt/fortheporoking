@@ -10,7 +10,22 @@ import { CitizenDialogue } from './citizen-dialogue';
  */
 export const strangerScenes = {
   welcome: (): DialogueScene => ({
-    text: 'Who disturbs the Poro King? Is it an audience you desire? What\'s your summoner name?',
+    // The welcome dialogue contains some keywords for google, like
+    // "lol", "champion", "generator", "random"
+    text: (
+      <span>
+        I am the <strong style={{fontSize: '2.4rem'}}>Poro King!</strong><br />
+        <br />
+        If you do not know what champion you should play in the upcoming battle, I will help you.
+        It is my duty to bring the right champions to the rift.
+        And it is the summoners, like you hopefully, that I send into battle.
+        One might say, I select the champions randomly or compare me to a simple "rAnDoM LoL cHaMpIoN gEnErAtOr".
+        Pah! My strategy goes far beyond random selection,
+        even if you cannot see it yet.<br />
+        <br />
+        So tell me, are you a summoner? What's your name?
+      </span>
+    ),
     options: [
       {
         render: setScene => {
