@@ -18,7 +18,7 @@ export const championFilterOption = (onSelect: (filter: ddragon.ChampionTag) => 
 
       <div className="ChampionFilter-buttons">
         {Object.keys(championTags).map(tag =>
-          <button className="ChampionFilter-button" onClick={() => onSelect(tag as ddragon.ChampionTag)}>
+          <button className="ChampionFilter-button" onClick={() => onSelect(tag as ddragon.ChampionTag)} key={tag}>
             <img src={championTags[tag as ddragon.ChampionTag].icon} alt="" className="ChampionFilter-buttonIcon"></img>
             {tag}
           </button>

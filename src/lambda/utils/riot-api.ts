@@ -13,7 +13,14 @@ export class RiotApi {
   getMatchesLast30Days = (accountId: string): Promise<Match[]> => {
     const beginTime = Date.now() - 1000 * 60 * 60 * 24 * 30;  // 30 days ago
     return this.fetch(`match/v4/matchlists/by-account/${accountId}?beginTime=${beginTime}`)
-      .then(({ matches }) => matches);
+      .then(response => {
+        if (!response.matches) {
+          return Promise.reject(
+            `Error retrieving riot api matchlist. API Response: ${JSON.stringify(response)}`
+          );
+        }
+        return response.matches;
+      });
   }
 
 
