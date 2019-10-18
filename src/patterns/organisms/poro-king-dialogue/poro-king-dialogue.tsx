@@ -5,31 +5,31 @@ import { strangerScenes } from '../../../ts/dialogue-scenes/stranger-dialogue-sc
 import localStorageKeys from '../../../ts/local-storage-keys';
 import { CitizenDialogue } from '../../../ts/dialogue-scenes/citizen-dialogue';
 
-type PoroKingDialogueProps = {};
-type PoroKingDialogueState = {}
+type PoroKingDialogueProps = {
+  /**
+   * Optional initial dialogue scene. (e.g. Impressum)
+   */
+  scene?: DialogueScene;
+};
 
-export class PoroKingDialogue extends React.Component<PoroKingDialogueProps, PoroKingDialogueState> {
-  private initialScene: DialogueScene;
+export const PoroKingDialogue = (props: React.PropsWithChildren<PoroKingDialogueProps>) => {
+  const initialScene = props.scene || getInitialScene();
+  return (
+    <div>
+      <DialogueBox>
+        <DialogueContent initialScene={initialScene} />
+      </DialogueBox>
+    </div>
+  );
+}
 
-  constructor(props: PoroKingDialogueProps) {
-    super(props);
-    this.initialScene = this.getInitialScene();
-  }
-
-  render(): ReactNode {
-    return (
-      <div>
-        <DialogueBox>
-          <DialogueContent initialScene={this.initialScene} />
-        </DialogueBox>
-      </div>
-    );
-  }
-
-  private getInitialScene = (): DialogueScene => {
-    const localStorageSummoner = localStorage.getItem(localStorageKeys.summonerName);
-    return localStorageSummoner
-      ? new CitizenDialogue(localStorageSummoner).scenes.welcome()
-      : strangerScenes.welcome();
-  }
+/**
+ * If there is a summoner name in local storage already, the initial scene
+ * is different from the one presented to a stranger.
+ */
+const getInitialScene = (): DialogueScene => {
+  const localStorageSummoner = localStorage.getItem(localStorageKeys.summonerName);
+  return localStorageSummoner
+    ? new CitizenDialogue(localStorageSummoner).scenes.welcome()
+    : strangerScenes.welcome();
 }

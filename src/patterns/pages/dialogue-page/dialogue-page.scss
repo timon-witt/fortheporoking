@@ -12,12 +12,22 @@
   }
 
   &-content {
-    position: absolute;   
+    position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     width: 70rem;
     max-width: 90%;
     min-height: 30rem;
+  }
+
+  &-footer {
+    position: absolute;
+    bottom: 1rem;
+    right: 2rem;
+
+    &Link {
+      margin-left: 2rem;
+    }
   }
 }

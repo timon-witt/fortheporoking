@@ -3,16 +3,16 @@ import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker';
 import { DialoguePage } from './patterns/pages/dialogue-page/dialogue-page';
-import { ImpressumPage } from './patterns/pages/impressum-page/impressum-page';
 
 import './index.scss';
+import { impressumScene } from './patterns/organisms/impressum-scene/impressum-scene';
 
 const routing = (
   <Router>
     <div className="App">
       <Switch>
         <Route exact path="/" component={DialoguePage} />
-        <Route path="/impressum" component={ImpressumPage} />
+        <Route path="/impressum" render={() => <DialoguePage dialogueScene={impressumScene} />} />
       </Switch>
     </div>
   </Router>
