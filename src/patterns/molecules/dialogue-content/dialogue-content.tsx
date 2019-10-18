@@ -20,7 +20,7 @@ export type DialogueOption = {
 
 type DialogueContentProps = {
   /**
-   * The initial scene. 
+   * The initial scene.
    * The scene can change based on user interactions inside that scene.
    */
   initialScene: DialogueScene;
@@ -62,7 +62,7 @@ const DialogueContentOption = ({ option, setScene }: React.PropsWithChildren<Dia
       option.onClick(setScene);
       // TODO: Set scene as inactive to prevent double clicks
     }
-  }, [option.onClick, setScene])
+  }, [option, setScene])
 
   const inner = option.text
     ? <div className="DialogueOption-text">{option.text}</div>

@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { DialogueBox } from '../../molecules/dialogue-box/dialogue-box';
 import { DialogueScene, DialogueContent } from '../../molecules/dialogue-content/dialogue-content';
 import { strangerScenes } from '../../../ts/dialogue-scenes/stranger-dialogue-scenes';

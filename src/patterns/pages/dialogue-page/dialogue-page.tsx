@@ -1,9 +1,8 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { PoroKingDialogue } from '../../organisms/poro-king-dialogue/poro-king-dialogue';
 
 import './dialogue-page.scss';
 import { DialogueScene } from '../../molecules/dialogue-content/dialogue-content';
-import { Link } from 'react-router-dom';
 
 export type DialoguePageProps = {
   /**

@@ -17,8 +17,9 @@
     top: 50%;
     transform: translate(-50%, -50%);
     width: 70rem;
-    max-width: 90%;
+    max-width: 95%;
     min-height: 30rem;
+    overflow: hidden;
   }
 
   &-footer {
