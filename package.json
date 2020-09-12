@@ -11,7 +11,7 @@
     "dotenv-webpack": "^1.7.0",
     "encoding": "^0.1.12",
     "http-proxy-middleware": "^0.19.1",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",
